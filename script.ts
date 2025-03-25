@@ -1,5 +1,5 @@
 import {Wallet, Blockchain} from "./entity";
-import * as readline from 'readline';
+import inquirer from "inquirer";
 
 function main() {
     const blockchain = new Blockchain();
@@ -8,7 +8,7 @@ function main() {
     blockchain.createGeneseBlock(100, wallet)
 
     console.log("-------------------- Création de 100 jetons --------------------")
-    console.log("Balance Wallet 1 : ", wallet.getBalance(blockchain), "jetons");
+    //console.log("Balance Wallet 1 : ", wallet.getBalance(blockchain), "jetons");
     console.log("----------------------------------------------------------------")
 
     console.log("")
@@ -22,8 +22,8 @@ function main() {
     console.log("")
     console.log("Wallet 1 donne 34 jetons to Wallet2")
     console.log("")
-    console.log("Solde Wallet 1 : ", wallet.getBalance(blockchain), "jetons");
-    console.log("Solde Wallet 2 : ", wallet2.getBalance(blockchain), "jetons");
+    //console.log("Solde Wallet 1 : ", wallet.getBalance(blockchain), "jetons");
+    //console.log("Solde Wallet 2 : ", wallet2.getBalance(blockchain), "jetons");
 
     console.log("")
 
@@ -35,40 +35,45 @@ function main() {
     console.log("")
 }
 
-
-
-function start() {
+async function start() {
     const blockchain = new Blockchain();
     const wallet = new Wallet();
+    console.log("Private Key : ", wallet.getPrivateKey)
     blockchain.createGeneseBlock(100, wallet)
 
+    const answer = await inquirer.prompt([
+        {
+            type: "list",
+            name: "choice",
+            message: "Que voulez-vous faire ?",
+            choices: ["Voir mon compte", "Faire un paiement", "Sortir"],
+        },
+    ]);
 
-    console.clear();
-    console.log('=== Système de Blockchain ===');
-    console.log('1. Créer un nouveau wallet');
-    console.log('2. Voir mon compte');
-    console.log('3. Faire un paiement');
-    console.log('4. Quitter');
+    switch (answer.choice) {
+        case "Voir mon compte":
+            console.log("Affichage des informations du compte...");
+            await viewAccount();
+            break;
+        case "Faire un paiement":
+            console.log("Procédure de paiement en cours...");
+            break;
+        case "Sortir":
+            console.log("Fermeture du programme.");
+            return;
+    }
 
-    this.rl.question('Choisissez une option (1-4): ', async (choice) => {
-        switch(choice) {
-            case '1':
-                console.log("choice1")
-                break;
-            case '2':
-                console.log("choice2")
-                break;
-            case '3':
-                console.log("choice3")
-                break;
-            case '4':
-                console.log('Au revoir!');
-                return;
-            default:
-                console.log('Option invalide. Réessayez.');
-                this.pressEnterToContinue();
-        }
-    });
+    async function viewAccount() {
+        const { privateKey } = await inquirer.prompt([
+            {
+                type: "password", // Masque la saisie de la clé privée
+                name: "privateKey",
+                message: "Entrez votre clé privée :",
+            },
+        ]);
+
+        console.log("Solde Wallet 1 :", wallet.getBalance(blockchain, privateKey), "jetons");
+    }
 }
 
 //main()

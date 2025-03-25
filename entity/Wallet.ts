@@ -15,6 +15,9 @@ export class Wallet {
     getPublicKey(): string {
         return this.publicKey;
     }
+    getPrivateKey(): string {
+        return this.privateKey;
+    }
 
     private generateKeyPair(): { privateKey: string, publicKey: string } {
         const { privateKey, publicKey } = crypto.generateKeyPairSync('rsa', {
@@ -71,7 +74,7 @@ export class Wallet {
         }
     }
 
-    getBalance(blockchain: Blockchain): number {
+    getBalance(blockchain: Blockchain, privateKey: string): number {
         let balance: number = 0;
 
         for (const block of blockchain.Blocks) {
@@ -90,7 +93,7 @@ export class Wallet {
 
         const transaction = new Transaction()
 
-        if (amount > this.getBalance(blockchain)) {
+        if (amount > this.getBalance(blockchain, "coucou")) {
             transaction.signed = false
         }
 
