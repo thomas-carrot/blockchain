@@ -1,0 +1,29 @@
+{
+  "BLOCKCHAIN_FILE_PATH": "/Users/thomas/Documents/blockchain/blockchain.json",
+  "Blocks": [
+    {
+      "nonce": 490041823,
+      "hash": "b1d27c97e3370c309ebd9b255d47377a1b85cbdffd91a692b3cb2d9e753535ad",
+      "transaction": {
+        "timestamp": 1742913409649,
+        "signed": true,
+        "amount": 100,
+        "sender": "genese",
+        "receiver": "-----BEGIN PUBLIC KEY-----\nMGMwDQYJKoZIhvcNAQEBBQADUgAwTwJIA1MUIBH4wVlJRiJuCLMzIb6ZTY0Dg6IQ\nwcMqz+VSa6g6coae3rznd0LAUJxgqv7zqs1W7Crv9ADFcsmXy6u2NkPUfOU74Qtv\nAgMBAAE=\n-----END PUBLIC KEY-----\n"
+      },
+      "prevHash": "0"
+    },
+    {
+      "nonce": 361881448,
+      "hash": "e3a22d306341dc3339f690045f776c45ce92412bf072287060216b5ffaaba1d8",
+      "prevHash": "b1d27c97e3370c309ebd9b255d47377a1b85cbdffd91a692b3cb2d9e753535ad",
+      "transaction": {
+        "timestamp": 1742913409654,
+        "signed": true,
+        "amount": 34,
+        "sender": "-----BEGIN PUBLIC KEY-----\nMGMwDQYJKoZIhvcNAQEBBQADUgAwTwJIA1MUIBH4wVlJRiJuCLMzIb6ZTY0Dg6IQ\nwcMqz+VSa6g6coae3rznd0LAUJxgqv7zqs1W7Crv9ADFcsmXy6u2NkPUfOU74Qtv\nAgMBAAE=\n-----END PUBLIC KEY-----\n",
+        "receiver": "-----BEGIN PUBLIC KEY-----\nMGMwDQYJKoZIhvcNAQEBBQADUgAwTwJIAngRrid7xyy4eOilEJ223K1AkmfyOXVu\nbWHFmof3OtnGdnPih3Il+zIMG7car85GRvBMIP5SvoSyVoRmeQ287SToogiNjEO1\nAgMBAAE=\n-----END PUBLIC KEY-----\n"
+      }
+    }
+  ]
+}

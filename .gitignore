@@ -1,0 +1,7 @@
+# Project exclude paths
+/entity/Block.js
+/entity/Blockchain.js
+/entity/index.js
+/entity/Transaction.js
+/entity/Wallet.js
+/script.js
