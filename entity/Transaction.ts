@@ -1,6 +1,6 @@
 export class Transaction {
     sender: string;
-    receiver: string;
+    recipient: string;
     amount: number;
 
     signed?: boolean

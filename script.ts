@@ -17,7 +17,7 @@ function main() {
     console.log("------------- Payment entre wallet et wallet 2 -----------------")
     console.log("")
 
-    blockchain.mine(wallet.sendMoney(blockchain, 34, wallet2.getPublicKey()))
+    blockchain.mine(wallet.sendMoney(blockchain, 34, wallet2.getPublicKey(), wallet.getPrivateKey()))
 
     console.log("")
     console.log("Wallet 1 donne 34 jetons to Wallet2")
@@ -38,41 +38,79 @@ function main() {
 async function start() {
     const blockchain = new Blockchain();
     const wallet = new Wallet();
-    console.log("Private Key : ", wallet.getPrivateKey)
-    blockchain.createGeneseBlock(100, wallet)
+    const wallet2 = new Wallet();
+    blockchain.createGeneseBlock(100, wallet);
 
-    const answer = await inquirer.prompt([
-        {
-            type: "list",
-            name: "choice",
-            message: "Que voulez-vous faire ?",
-            choices: ["Voir mon compte", "Faire un paiement", "Sortir"],
-        },
-    ]);
+    let continuer = true;
 
-    switch (answer.choice) {
-        case "Voir mon compte":
-            console.log("Affichage des informations du compte...");
-            await viewAccount();
-            break;
-        case "Faire un paiement":
-            console.log("Procédure de paiement en cours...");
-            break;
-        case "Sortir":
-            console.log("Fermeture du programme.");
-            return;
+    while (continuer) {
+        const answer = await inquirer.prompt([
+            {
+                type: "list",
+                name: "choice",
+                message: "Que voulez-vous faire ?",
+                choices: ["Voir mon compte", "Faire un paiement", "Sortir"],
+            },
+        ]);
+
+        switch (answer.choice) {
+            case "Voir mon compte":
+                console.log("Affichage des informations du compte...");
+                await viewAccount();
+                break;
+            case "Faire un paiement":
+                await sendMoney();
+                break;
+            case "Sortir":
+                console.log("Fermeture du programme.");
+                continuer = false;
+                break;
+        }
     }
 
     async function viewAccount() {
         const { privateKey } = await inquirer.prompt([
             {
-                type: "password", // Masque la saisie de la clé privée
+                type: "password",
                 name: "privateKey",
                 message: "Entrez votre clé privée :",
             },
         ]);
-
         console.log("Solde Wallet 1 :", wallet.getBalance(blockchain, privateKey), "jetons");
+    }
+
+    async function sendMoney() {
+        const { recipientPublicKey } = await inquirer.prompt([
+            {
+                type: "input",
+                name: "recipientPublicKey",
+                message: "Entrez la clé publique du destinataire :",
+                default: wallet2.getPublicKey()
+            },
+        ]);
+
+        const { privateKey } = await inquirer.prompt([
+            {
+                type: "password",
+                name: "privateKey",
+                message: "Entrez votre clé privée :",
+                default: wallet.getPrivateKey()
+            },
+        ]);
+
+        const { amount } = await inquirer.prompt([
+            {
+                type: "number",
+                name: "amount",
+                message: "Entrez le montant à envoyer :",
+                default: 0
+            },
+        ]);
+
+        console.log("------------- Payment entre wallet et wallet 2 -----------------");
+        blockchain.mine(wallet.sendMoney(blockchain, amount, recipientPublicKey, privateKey));
+        console.log("Solde Wallet 1 :", wallet.getBalance(blockchain, wallet.getPrivateKey()), "jetons");
+        console.log("Solde Wallet 2 :", wallet2.getBalance(blockchain, wallet2.getPrivateKey()), "jetons");
     }
 }
 

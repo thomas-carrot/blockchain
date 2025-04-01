@@ -26,7 +26,7 @@ export class Blockchain {
         const transaction = new Transaction()
         transaction.amount = amount
         transaction.sender = "genese"
-        transaction.receiver = wallet.getPublicKey()
+        transaction.recipient = wallet.getPublicKey()
 
         const block = new Block()
         block.transaction = transaction

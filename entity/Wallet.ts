@@ -82,14 +82,14 @@ export class Wallet {
                 if (block.transaction.sender === this.privateKeyToPublicKey())
                     balance -= block.transaction.amount;
 
-                if (block.transaction.receiver === this.privateKeyToPublicKey())
+                if (block.transaction.recipient === this.privateKeyToPublicKey())
                     balance += block.transaction.amount;
             }
         }
 
         return balance;
     }
-    sendMoney(blockchain: Blockchain, amount: number, publicKeyReceiver: string) {
+    sendMoney(blockchain: Blockchain, amount: number, publicKeyReceiver: string, privateKey: string) {
 
         const transaction = new Transaction()
 
@@ -99,7 +99,7 @@ export class Wallet {
 
         transaction.amount = amount
         transaction.sender = this.privateKeyToPublicKey();
-        transaction.receiver = publicKeyReceiver
+        transaction.recipient = publicKeyReceiver
 
         return transaction;
     }
