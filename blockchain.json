@@ -2,27 +2,27 @@
   "BLOCKCHAIN_FILE_PATH": "/Users/thomas/Documents/blockchain/blockchain.json",
   "Blocks": [
     {
-      "nonce": 643217869,
-      "hash": "a5b5ef41053e0df00bf5beb6e243d70e311b5d28962cbc47b29389d7aafa3d81",
+      "nonce": 437109007,
+      "hash": "d7000828665bb1bf375f5f7f70af3f356246e3fc49d38073d544a79ec29db4b5",
       "transaction": {
-        "timestamp": 1743507606145,
+        "timestamp": 1743514030229,
         "signed": true,
         "amount": 100,
         "sender": "genese",
-        "receiver": "-----BEGIN PUBLIC KEY-----\nMGMwDQYJKoZIhvcNAQEBBQADUgAwTwJIAtxdldycHJZaetrfEm//WX0iF4FhYQSW\nc1qxnww2ySLbwiKOo2GIplCqD8+wh7smy6UMBwkXZTqT3f+LjaAT5Nk79unmWO5V\nAgMBAAE=\n-----END PUBLIC KEY-----\n"
+        "recipient": "-----BEGIN PUBLIC KEY-----\nMGMwDQYJKoZIhvcNAQEBBQADUgAwTwJIAu1IYdXUObPA3IYKgmA7LKM+p/gtfP0h\n+bXel1Wp6LTCtzZx/kF77dFP1H2Lz4GfKNrt0kJg1C898cBywGacrwheedeO2v43\nAgMBAAE=\n-----END PUBLIC KEY-----\n"
       },
       "prevHash": "0"
     },
     {
-      "nonce": 4029634,
-      "hash": "4ad40b3d499a812baba7ae1e0a924ccb5cfd9611ceb98a27a9c3e18407ab2ece",
-      "prevHash": "a5b5ef41053e0df00bf5beb6e243d70e311b5d28962cbc47b29389d7aafa3d81",
+      "nonce": 97142109,
+      "hash": "41317dcd75db5cc0cc318ffd3510e39641fb822b34351ab5d2ce58035739169d",
+      "prevHash": "d7000828665bb1bf375f5f7f70af3f356246e3fc49d38073d544a79ec29db4b5",
       "transaction": {
-        "timestamp": 1743507606146,
+        "timestamp": 1743514035513,
         "signed": true,
-        "amount": 34,
-        "sender": "-----BEGIN PUBLIC KEY-----\nMGMwDQYJKoZIhvcNAQEBBQADUgAwTwJIAtxdldycHJZaetrfEm//WX0iF4FhYQSW\nc1qxnww2ySLbwiKOo2GIplCqD8+wh7smy6UMBwkXZTqT3f+LjaAT5Nk79unmWO5V\nAgMBAAE=\n-----END PUBLIC KEY-----\n",
-        "receiver": "-----BEGIN PUBLIC KEY-----\nMGMwDQYJKoZIhvcNAQEBBQADUgAwTwJIAthv2GgqABf7MaopiMFCSwRXmKEeqghp\nUfJW9cgxQf/3YMtiCiBOuT6p4NcravQ0jQ07RaBSu2eJ4Rt+hjxNYPXr3gMdrfQV\nAgMBAAE=\n-----END PUBLIC KEY-----\n"
+        "amount": 50,
+        "sender": "-----BEGIN PUBLIC KEY-----\nMGMwDQYJKoZIhvcNAQEBBQADUgAwTwJIAu1IYdXUObPA3IYKgmA7LKM+p/gtfP0h\n+bXel1Wp6LTCtzZx/kF77dFP1H2Lz4GfKNrt0kJg1C898cBywGacrwheedeO2v43\nAgMBAAE=\n-----END PUBLIC KEY-----\n",
+        "recipient": "-----BEGIN PUBLIC KEY-----\nMGMwDQYJKoZIhvcNAQEBBQADUgAwTwJIA7KPOHaP9LJ4NxoBP+6CJM//Lt8AU/UC\nPxXAxo95f4bnQYgsxfYf11K4J5/meAQ0xw1i7PuDYRS4g0H1d/nfPXlW4llY7HyV\nAgMBAAE=\n-----END PUBLIC KEY-----\n"
       }
     }
   ]

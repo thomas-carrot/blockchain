@@ -60,6 +60,7 @@ async function start() {
                 break;
             case "Faire un paiement":
                 await sendMoney();
+                blockchain.saveBlockchain(blockchain)
                 break;
             case "Sortir":
                 console.log("Fermeture du programme.");
